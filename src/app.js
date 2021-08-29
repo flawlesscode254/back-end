@@ -13,9 +13,7 @@ mongooose.connect(process.env.DATABASE_URL, {
     useUnifiedTopology: true,
 });
 
-app.use(cors({
-    origin: process.env.CORS_ORIGIN
-}));
+app.use(cors());
 app.use(morgan("common"));
 app.use(helmet());
 app.use(express.json());
@@ -26,7 +24,7 @@ app.get('/', (req, res) => {
     })
 });
 
-app.use('/api/logs', router)
+app.use('/v1/sales', router)
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 

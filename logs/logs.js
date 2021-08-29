@@ -6,7 +6,7 @@ router.get('/', async (req, res, next) => {
     try {
         const getter = await logEntries.find({}).sort({
             createdAt: -1
-        }).limit(7)
+        })
         res.json(getter)
     } catch (error) {
         next(error)
